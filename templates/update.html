@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Doctor</title>
+</head>
+<body>
+    <h1>Update Doctor</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Select Doctor:</label>
+        <select name="SSN" onchange="populateForm(this.value)">
+            <option value="">Select a doctor</option>
+            {% for doctor in doctors %}
+            <option value="{{ doctor.SSN }}">{{ doctor.FirstName }} {{ doctor.LastName }} ({{ doctor.SSN }})</option>
+            {% endfor %}
+        </select><br>
+
+        <label>First Name:</label>
+        <input type="text" name="FirstName" id="FirstName" required><br>
+        <label>Last Name:</label>
+        <input type="text" name="LastName" id="LastName" required><br>
+        <label>Specialty:</label>
+        <input type="text" name="Specialty" id="Specialty"><br>
+        <label>Years of Experience:</label>
+        <input type="number" name="YearsOfExperience" id="YearsOfExperience"><br>
+        <label>Phone Number:</label>
+        <input type="text" name="PhoneNum" id="PhoneNum"><br>
+        <button type="submit">Update</button>
+    </form>
+    <a href="/">Back to Home</a>
+</body>
+<script>
+    function populateForm(ssn) {
+        // Optional: Use AJAX to populate the form based on selected doctor
+    }
+</script>
+</html>
